@@ -127,7 +127,12 @@ else
 fi
 
 
+# macos
 COMP_ARGS="$COMP_ARGS -Werror=incompatible-pointer-types -Wno-int-conversion"
+
+# avoid zig to cause illegal instructions:  https://github.com/ziglang/zig/issues/4830#issuecomment-605491606
+COMP_ARGS="$COMP_ARGS -O2"
+
 prefix=./bin/quickjs/${PLATFORM}-${ARCH}
 mkdir -p $prefix
 
